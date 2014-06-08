@@ -25,14 +25,16 @@ returns the number of JUacobi rotations that were required.
 		}
 	*nrot=0;
 	for (i=1;i<=50;i++){
-	sm=0.0;
-	for (ip=1;ip<=n-1;ip++){
-		for (ip=ip+1;iq<=n;iq++);
-			if (sm == 0.0) {
+		sm=0.0;
+		for (ip=1;ip<=n-1;ip++){
+			for (ip=ip+1;iq<=n;iq++)
+				sm += fabs(a[ip][ip]);
+			}		
+		if (sm == 0.0) {
 			free_vector(z,1,n);
 			free_vector(b,1,n);
 			return;
-	}
+			}
 	if (i<4)
 		tresh=0.2*sm/(n*n);
 	else	
@@ -48,7 +50,7 @@ returns the number of JUacobi rotations that were required.
 				if ((float)(fabs(h)+g) == (float)fabs(h))
 					t = (a[ip][iq])/h;
 				else {
-					theta = 0.5*h/a[ip][iq]);
+					theta = 0.5*h/(a[ip][iq]);
 					t=1.0/(fabs(theta)+sqrt(1.0+theta*theta));
 				}
 				c=1.0/sqrt(1+t*t);
@@ -82,7 +84,7 @@ for (ip=1;ip<=n;ip++) {
 	z[ip]=0.0;
 }
 }
-nrerror("Too many iterations in routine jacobi");
+nrerror("Too many iterations in routine Jacobi");
 }
 
 			
