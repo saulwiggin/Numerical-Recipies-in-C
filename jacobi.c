@@ -1,11 +1,11 @@
 #include <math.h>
 #include "nrutil.h"
-#define ROTAT(a,i,j,k,l) g=a[i][j];h=a[k][l];a[i][j]=g-s*(h+g*tau);\
+#define ROTATE(a,i,j,k,l) g=a[i][j];h=a[k][l];a[i][j]=g-s*(h+g*tau);\
 a[k][l]=h+s*(g-h*tau);
 
 void jacobi(float **a, int n, float d[], float **v, int *nrot)
-/* Computes all eignvalues and eignvectors of a real symetric matrix a[1..n][1..n]. On output 
-elements of a above the fiagonal are destroyed. d[1..n] returns the eigenvalues of a v[1..n][1..n] is a matrix whose columns contain, on output, the normalised eigenvectors of a. nrot 
+/* Computes all eignvalues and eignvectors of a real symmetric matrix a[1..n][1..n]. On output 
+elements of a above the diagonal are destroyed. d[1..n] returns the eigenvalues of a v[1..n][1..n] is a matrix whose columns contain, on output, the normalised eigenvectors of a. nrot 
 returns the number of JUacobi rotations that were required.
 */
 {
@@ -14,7 +14,7 @@ returns the number of JUacobi rotations that were required.
 	
 	b = vector(1,n);
 	z = vector(1,n);
-	/* Initialise to the identy matrix */
+	/* Initialise to the identity matrix */
 	for (ip=1;ip<=n;ip++){
 		for (iq=1;iq<=n;iq++) v[ip][iq]=0.0;
 		v[ip][ip]=1.0;
@@ -27,12 +27,11 @@ returns the number of JUacobi rotations that were required.
 	for (i=1;i<=50;i++){
 	sm=0.0;
 	for (ip=1;ip<=n-1;ip++){
-		for (iq=ip+1;iq<=n;iq++);
-	}
-	if (sm == 0.0) {
-		free_vector(z,1,n);
-		free_vector(b,1,n);
-		return;
+		for (ip=ip+1;iq<=n;iq++);
+			if (sm == 0.0) {
+			free_vector(z,1,n);
+			free_vector(b,1,n);
+			return;
 	}
 	if (i<4)
 		tresh=0.2*sm/(n*n);
@@ -85,4 +84,5 @@ for (ip=1;ip<=n;ip++) {
 }
 nrerror("Too many iterations in routine jacobi");
 }
+
 			
