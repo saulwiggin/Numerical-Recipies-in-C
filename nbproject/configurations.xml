@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="94">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="Chapter11.Eigensystems">
+        <in>balanc.c</in>
+        <in>eigsrt.c</in>
+        <in>elmhes.c</in>
+        <in>helloworld.c</in>
+        <in>hqr.c</in>
+        <in>jacobi.c</in>
+        <in>tqli.c</in>
+        <in>trapzd.c</in>
+        <in>tred2.c</in>
+        <in>trli.c</in>
+      </df>
+      <df name="Chapter12.Fast-Fourier-Transforms">
+        <in>cosft1.c</in>
+        <in>cosft2.c</in>
+        <in>four1.c</in>
+        <in>hello.c</in>
+        <in>helloworld.c</in>
+        <in>realft.c</in>
+        <in>rlft3.c</in>
+        <in>sinft.c</in>
+        <in>twofft.c</in>
+      </df>
+      <in>helloworld.c</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>makefile.txt</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>makefile.txt</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f makefile.txt</buildCommand>
+          <cleanCommand>${MAKE} -f makefile.txt clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+      </makefileType>
+      <item path="Chapter11.Eigensystems/balanc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/eigsrt.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/elmhes.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/helloworld.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/hqr.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/jacobi.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/tqli.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/trapzd.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/tred2.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter11.Eigensystems/trli.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/cosft1.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/cosft2.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/four1.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/hello.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/helloworld.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/realft.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/rlft3.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/sinft.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="Chapter12.Fast-Fourier-Transforms/twofft.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <folder path="0/Chapter11.Eigensystems">
+        <cTool>
+          <incDir>
+            <pElem>Chapter11.Eigensystems</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="0/Chapter12.Fast-Fourier-Transforms">
+        <cTool>
+          <incDir>
+            <pElem>Chapter12.Fast-Fourier-Transforms</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <item path="helloworld.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

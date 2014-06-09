@@ -17,12 +17,10 @@ void four1(float data[], unsigned long nn, int isign)
 		while (m >=2 && j > m) {
 			j -= m;
 			m >>= 1;
-			while (m >=2 && j > m) {
-				j -= m;
-				m >>= 1;
 			}
 			j += m;
 		}
+		/*here begins the Danielson-Lanczos section of the routine */
 		mmax=2;
 		while (n > mmax) {
 			istep = mmax << 1;
