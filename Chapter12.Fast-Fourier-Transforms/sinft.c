@@ -3,7 +3,7 @@
 void sinft(float y[], int n)
 
 {
-	voif realft(float data[], unsigned long n, in isign);
+	void realft(float data[], unsigned long n, int isign);
 	int j, n2=n+2;
 	float sum,y1,y2;
 	double theta,wi=0.0, wr=1.0, wpi,wpr,wtemp;
