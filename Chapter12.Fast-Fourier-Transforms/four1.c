@@ -4,7 +4,7 @@ void four1(float data[], unsigned long nn, int isign)
 {
 	unsigned long n, mmax, m, j, istep,i;
 	double wtemp, wr, wpr, wpi, wi, theta;
-	float tempr, tempil;
+	float tempr, tempi;
 	
 	n=nn << 1;
 	j=1;
@@ -29,7 +29,7 @@ void four1(float data[], unsigned long nn, int isign)
 			theta = isign*(6.28318530717959/mmax);
 			wtemp=sin(0.5*theta);
 			wtemp=sin(0.5*theta);
-			wpr = -2.0*wtwmp*wtemp;
+			wpr = -2.0*wtemp*wtemp;
 			wpi = sin(theta);
 			wr=1.0;
 			wi=0.0;
@@ -46,6 +46,7 @@ void four1(float data[], unsigned long nn, int isign)
 				wr = (wtemp=wr)*wpr-wi*wpi+wr;
 				wi = wi*wpr+wtemp*wtemp*wpi+wi;
 			}
-			mmax=isep;
+			mmax=istep;
 		}
 	}
+}
