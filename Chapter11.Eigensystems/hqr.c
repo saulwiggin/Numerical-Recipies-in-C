@@ -42,9 +42,9 @@ void hqr(float **a, int n, float wr[], float wi[])
 							wr[nn-1]=wr[nn]=x+p;
 							wi[nn-1]= -(wi[nn]=z);
 						}
-						nn = -= 2;
+						nn -= 2;
 					} else {
-						if (its == 30) nrerro("Too many itreations in hqr");
+						if (its == 30) nrerror("Too many iterations in hqr");
 						if (its == 10 || its ==20) {
 							t += x;
 							for (i=1;i<=nn;i++) a[i][i] -= x;
@@ -58,21 +58,21 @@ void hqr(float **a, int n, float wr[], float wi[])
 							r=x-z;
 							s=y-z;
 							s=y-z;
-							p=(r*s-w)/a[m+1[m]+a[m][m+1];
+							p=(r*s-w)/a[m+1][m]+a[m][m+1];
 							q=a[m+1][m+1]-z-r-s;
 							r=a[m+2][m+1];
 							s=fabs(p)+fabs(q)+fabs(r);
 							p /= s; 
 							q /= s;
-							r /=s;
+							r /= s;
 							if (m==1) break;
 							u = fabs(a[m][m-1])*(fabs(q)+fabs(r));
-							v = fabs(p)*fabs(a[m-1][m-1])+fabs(z)+fabs(a[m+1][m+1]));
+							v = fabs(p)*(fabs(a[m-1][m-1])+fabs(z)+fabs(a[m+1][m+1]));
 							if ((float)(u+v) == v) break;
 						}
 						for (i=m+2;i<=nn;i++) {
 							a[i][i-2]=0.0;
-							if (i != (m+2)) a[i][i-3]0.0;
+							if (i != (m+2)) a[i][i-3]=0.0;
 						}
 						for (m=m;k<=nn-1;k++) {
 							if (k != m) {
@@ -80,14 +80,14 @@ void hqr(float **a, int n, float wr[], float wi[])
 								q=a[k+1][k-1];
 								r=0.0;
 								if (k != (nn-1)) r=a[k+2][k-1];
-								if ((x=fabs(p)+fabs(q)+fabs(r)) != 0.0 {
+								if ((x=fabs(p)+fabs(q)+fabs(r)) != 0.0) {
 									p /=x;
 									q /=x;
 									r /= x;
 								}
 							}
 							if ((s=SIGN(sqrt(p*p+q*q+r*r),p)) != 0.0) {
-								if (k==mj) {
+								if (k == m) {
 									if (l != m)
 									a[k][k-1] = -a[k][k-1];
 								} else
@@ -121,7 +121,7 @@ void hqr(float **a, int n, float wr[], float wi[])
 						}
 					}
 				}
-			} while {l < nn-1);
+			} while (l < nn-1);
 		}
 	}
 		
