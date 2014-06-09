@@ -32,4 +32,11 @@ wr=(wtemp=wr)*wpr-wi*wpi+wr;
 wi=wi*wpr+wtemp*wpi+wi;
 }
 if (isign == 1) {
-	
+data[1] = (hir=data[1])+data[2];
+data[2] = hir-data[2];
+} else {
+data[1] = c1*((hir=data[1])+data[2]);
+data[2]=c1*(h1r-data[2]);
+four1(data,n>>1,-1);
+}
+}	
