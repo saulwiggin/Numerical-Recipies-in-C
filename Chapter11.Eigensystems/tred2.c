@@ -43,7 +43,7 @@ void tred2(float **a, int n, float d[], float e[])
 							}
 						}
 					} else 
-						e[i]=a[i]l];
+						e[i]=a[i][l];
 						d[i]=h;
 					}
 					/* Next statement can be omitte if the eigenvectors are not wanted */
@@ -62,7 +62,7 @@ void tred2(float **a, int n, float d[], float e[])
 									a[k][j] -= g*a[k][i];
 								}
 							}
-							d[i][i];
+							d[i]=a[i][i];
 							a[i][i]=1.0;
 							for (j=1;j<=l;j++) a[j][i]=a[i][j]=0.0;
 						}
