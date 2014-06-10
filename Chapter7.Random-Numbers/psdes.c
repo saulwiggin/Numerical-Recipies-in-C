@@ -1,4 +1,4 @@
-#define NITER4
+#define NITER 4
 
 void psdes( unsigned long *lword, unsigned long *irword)
 {
@@ -11,9 +11,9 @@ void psdes( unsigned long *lword, unsigned long *irword)
 		for (i=0;<NITER;i++) {
 		
 		ia = (iswap=(*irword)) ^ c1[i];
-		itmpl = ia & 0xffff;
+		itmphl = ia & 0xffff;
 		itmph = ia >> 16;
-		ib=itmpl*itmpl+ ^ c1[i];
+		ib=itmphl*itmphl+ ^ (itmph*itmph);
 		*irword=(*lword) ^ (((ia= (ib >> 16) |
 			((in & 0xffff) << 16)) ^ c2[i])+itmpl*itmph);
 			*lword=iswap;
