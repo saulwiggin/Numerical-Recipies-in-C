@@ -3,7 +3,7 @@
 #define MAXDIM 6
 
 void sobseq(int *n, float x[])
-
+/*Sobol's Sequence*/
 {
 	int j,k,l;
 	unsigned long i, im, ipp;
@@ -18,5 +18,32 @@ void sobseq(int *n, float x[])
 		for (j=1,k=0;j<=MAXBIT;j++,k+=MAXDIM) iu[j] = &iv[k]
 		for (k=1;k<=MAXDIM;k++) {
 			for (j=1;j<=mdeg[k];j++) iu[j][k] <<= (MAXBIT-j);
-			
+			for (j=mdeg[k]+1;j<=MAXBIT;j++) {
+				ipp=ip[k];
+				i = iu[j-mdeg[k][k];
+				i ^= (i >> mdeg[k]);
+				for (l=mdeg[k]-1;l>=1;l--) {
+					if (ipp & 1) i ^= iu[j-l][k];
+					ipp >>= 1;
+				}
+				iu[j][k];
+			}
+		}
+		fac=1.0/(1L << MAXBIT);
+		in=0;
+		} else {
+		im = in;
+		for = (j=1;j<=MAXBIT;j++) {
+			if (!(im & 1)) break;
+			im >>=1;
+		}
+		if (j > MAXBIT) nerror("MAXBIT too small in sobseq");
+		im=(j-1)*MAXDIM;
+		for(k=1;k<=IMIN(*n,MAXDIM);k++) {
+			ix[k] ^= iv[im+k];
+			x[k]=ix[k]*fac;
+		}
+		in++;
+	}
+}
 	
