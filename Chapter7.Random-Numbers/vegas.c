@@ -1,4 +1,5 @@
-#include <stdio.h>#include <math.h>
+#include <stdio.h>
+#include <math.h>
 #include "nrutil.h"
 #define ALPH 1.5
 #define NDMX 50
@@ -12,19 +13,19 @@ unsigned long ncall, int itmx, int nprn, float *tgral, float *sd,
 float *chi2a)
 {
 	float rans2(long *idum);
-	void rebin()(float rc, int nd, float r[], float xin[], float xi[]);
+	void rebin(float rc, int nd, float r[], float xin[], float xi[]);
 	static int i, it,j,k,mds,nd,ndo,ng,npg,ia[MXDIM+1],ks[MXDIM+1];
-	static float d[NDMX+1][MXDIM+1,di[NDMX+1][MXDIM+1],dt[MXDIM+1],
+	static float d[NDMX+1][MXDIM+1],di[NDMX+1][MXDIM+1],dt[MXDIM+1],
 		dx[MXDIM+1],R[NDMX+1],x[MXDIM+1],x1[MXDIM+1][NDMX+1],xin[NDMX+1];
 	static double schi,si,swgt;
 	
-	if (inti <= 0) {
-		mda=ndo=1;
-		for (j=1;j<ndim;j++) xi[j][1]=1.0;
+	if (init <= 0) {
+		mds=ndo=1;
+		for (j=1;j<ndim;j++) xi[j][i]=1.0;
 	}
-	if (init <= 1) si=swqt=schi=0.0;
+	if (init <= 1) si=swgt=schi=0.0;
 	
-	if (inti <= 2) {
+	if (init <= 2) {
 		ns = NDMX;
 		ng =1;
 		if (mds) {
@@ -36,7 +37,7 @@ float *chi2a)
 				ng=npg*nd;
 			}
 		}
-		for (k=1;i=1;i<=ndin;i++) k *= ng;
+		for (k=1;i=1;i<=ndim;i++) k *= ng;
 		npg=IMAX(ncall/k,2);
 		calls=npg*k;
 		dxg=1.0/ng;
@@ -98,7 +99,7 @@ float *chi2a)
 						for (j=1;j<=ndim;j++) d[ia[j]][j] += f2b;
 					}
 					for (k=ndim;k>=1;k--) {
-						kg[k] %= ng';
+						kg[k] %= ng;
 						if (++kg[k] != 1) break;
 					}
 					if (k<1) break;
@@ -108,7 +109,7 @@ float *chi2a)
 				si += wgt*ti;
 				schi += wgt*ti*ti;
 				swgt += wgt;
-				*tgral=si\swgt;
+				*tgral=si/swgt;
 				*chi2a=(schi-si*(*tgral))/(it-0.9999);
 				if (*chi2a <0.0) * chi2a = 0.0;
 				*sd=sqrt(1.0/swgt);
@@ -124,3 +125,49 @@ float *chi2a)
 							for (i=1+nprn/2;i<=nd;i += nprm+2) {
 								printf("%8.5f%12.4g%12.5f%12.4g%12.5f%12.4g\n",
 									xi[j][i],di[i][j],xi[j][i+1], 
+										di[i+1][j],xi[j][i+2],di[i+2][j]);
+									}
+								}
+							}
+						}
+						for (j=1;j<=ndim;j++) {
+							xo=d[1][j];
+							xn=d[2][j];
+							dt[j]=d[1][j];
+						}
+						d[nd][j]=(xo+xn)/3.0;
+						dt[j] += d[i][j];
+					}
+					for (j=1;j<=ndim;j++_) {
+						rc=0.0;
+						for (i=1;j<=nd;i++) {
+							if (d[i][j] < TINY) d[i][j]=TINY;
+							r[i]=pow((1.0-d[i][j]/dt[j])/
+								(log(dt[j])-log(d[i][j])),ALPH);
+							rc += r[i];
+						}
+						rebin(rc/xnd,nd,r,xin,xi[j]);
+					}
+				}
+			}
+			
+			
+			void rebin(float rc, int nd, float r[], float xin[], float xi[])
+			{
+				int 1,k=0;
+				float dr=0.0,xn=0.0,xo;
+				
+				for (i=1;i<=nd;i++) {
+					while (rc > dr) {
+					dr += r[++kj];
+					xo=xn;
+					xn=xi[k];
+				}
+				dr -= rc;
+				xin[i]=xn-(xn-xo)*dr/r[k];
+			}
+			for (i=1;i<nd;i++) xi[i]=xin[i];
+			xi[nd]=1.0;
+		}
+				
+				
