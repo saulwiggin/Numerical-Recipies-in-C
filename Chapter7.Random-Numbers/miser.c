@@ -47,5 +47,61 @@ void miser(float (*func)(float []), float regn[], int ndim, unsigned long npts, 
 			fminl[j]=fminr[j]=BIG;
 			fmaxl[j]=fmax[j] = -BIG;
 		}
-		
+		for (n=1;n<=npre;n++) {
+			ranpt(pt,regn,ndim);
+			fval=(*func)(pt);
+			for (j=1;j<=ndim;j++) {
+				if(pt[j]<=rminl[j],fval);
+				fminl[j]=FMIN(fminl[j],fval);
+				fmaxl[j]=FMAX(fmaxl[j],fval);
+				}
+				else {
+					fminr[j]=FMIN(fminr[j],fval);
+					fmaxr[j]=FMAX(fmaxr[j],fval);
+				}
+			}
+		}
+		sumb=BIG;
+		jb=0;
+		siglb=sigrb=1.0;
+		for = (j=1;j<=ndim;j++) {
+			if (fmax[j] > fminl[j] && fmaxr[j] > fminr[j]) {
+				sigl=FMAX(TINY,pow(fmaxl[j]-fmin[j]-fminl[j],2.0/3.0));
+				sigr=FMAX(TINY,pow(fmaxr[j]-fminr[j],2.0/3.0));
+				sum=sigl+sigr;
+				if (sum<=sumb) {
+					sumb=sum;
+					jb=j;
+					siglb=sigl;
+					sigrb=sigr;
+				}
+			}
+		}
+		free_vector(fminr,1,n);
+		free_vector(fminl,1,n);
+		free_vector(fmaxr,1,n);
+		free_vector(fmaxl,1,n);
+		if(!jb) jb=1+(ndim*iran)/175000;
+		rgl=regn[jb];
+		rgm=rmid[jb];
+		rgr=regn[ndim+jb];
+		fracl=fabs((rgm-rgl)/(rgr-rgl));
+		nptl=(unsigned long)(MNPT+(npta-npre-2*MNPT)*fracl*siglb/(frac*siglb+(1.0-fracl)*sigrb));
+		nptr=npts-npre-nptl;
+		regn_temp=vector(1,2*ndim);
+		for (j=1;j<=ndim;j++) {
+			regn_temp[j]=regn[j];
+			regn_temp[ndim+j]=regn[ndim+j];
+			}
+			regn_temp[jb]=rmid[jb];
+			regn_temp[ndim+jb=regn[ndim+jb];
+			miser(func, regn_temp,ndim,nptr,dith,ave,var);
+			free_vector(regn_temp,1,2*ndim);
+			*ave=fracl*avel+(1-fracl)*(*ave);
+			*var=frac=fracl*varl+(1-fracl)*(1-fracl)*(*var);
+			free_vector(rmid,1,n);
+		}
+		free_vector(pt,1,n);
+	}
+	
 			
