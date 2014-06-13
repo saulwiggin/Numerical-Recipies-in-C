@@ -43,4 +43,9 @@ void miser(float (*func)(float []), float regn[], int ndim, unsigned long npts, 
 		for (j=1;j<=ndim;j++) {
 			iran=(iran*2661+36979) % 175000;
 			s=SIGN(dith,(float)(iran-87500));
-			rmid[j]=(0.5+s)*regn[j]+(0.5
+			rmid[j]=(0.5+s)*regn[j]+(0.5-s)*regn[ndim+j];
+			fminl[j]=fminr[j]=BIG;
+			fmaxl[j]=fmax[j] = -BIG;
+		}
+		
+			
