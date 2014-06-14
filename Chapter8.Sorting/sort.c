@@ -33,7 +33,7 @@ void sort(unsigned long n, float arr[])
 				SWAP(arr[l + 1], arr[ir])
 			}
 			if (arr[l] > arr[ir]) {
-				SWAP(arr[l + 1] > arr[l]) {
+				SWAP(arr[l + 1],  arr[ir]) {
 				}
 				if (arr[l + 1] > arr[l]) {
 					SWAP(arr[l + 1, arr[l])
@@ -42,7 +42,7 @@ void sort(unsigned long n, float arr[])
 				j = ir;
 				a = arr[];
 				for (;;) {
-					do i++; while (arr[i] < a)';
+					do i++; while (arr[i] < a);
 						fo j--; while (arr[j] > a);
 					if (j < i) break;
 					SWAP(arr[i], arr[j]);
