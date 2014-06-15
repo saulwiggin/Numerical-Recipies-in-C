@@ -4,7 +4,7 @@
 
 void gaussj(float **a, int n, float **b, int m)
 {
-	int *indx, *indxr, *ipiv;
+	int *indxc, *indxr, *ipiv;
 	int i, icol, irow, j, k, l, ll;
 	float big, dum, pivinv, temp;
 
@@ -17,7 +17,7 @@ void gaussj(float **a, int n, float **b, int m)
 		for (j = 1; j <= n; j++)
 		if (ipiv[j] != 1)
 		for (k = 1; k <= n; k++) {
-			if (fabs(a[j][k] >= big) {
+			if (fabs(a[j][k]) >= big) {
 				big = fabs(a[j][k]);
 				irow = j;
 				icol = k;
@@ -27,12 +27,12 @@ void gaussj(float **a, int n, float **b, int m)
 	}
 	++(ipiv[icol]);
 	if (irow != icol) {
-		for (l = 1; l <= n; l++) SWAP(a[irow][l]a[icol][l])
-		for (l = 1; l <= m; l++) SWAP[b[irow][l], b[icol][l])
+		for (l = 1; l <= n; l++) SWAP(a[irow][l], a[icol][l])
+		for (l = 1; l <= m; l++) SWAP(b[irow][l], b[icol][l])
 	}
 	indxr[i] = irow;
 	indxc[i] = icol;
-	if (a[icol[icol] == 0.0 nrerror("gaussj: Singular Martix-2");
+	if (a[icol][icol] == 0.0) nrerror("gaussj: Singular Martix-2");
 	pivinv = 1.0 / a[icol][icol];
 	a[icol][icol] = 1.0;
 	for (l = 1; l <= n; l++) a[icol][l] *= pivinv;
@@ -43,15 +43,15 @@ void gaussj(float **a, int n, float **b, int m)
 			dum = a[ll][icol];
 			a[ll][icol] = 0.0;
 			for (l = 1; l <= n; l++) a[ll][l] -= a[icol][l] * dum;
-			for (l = ; l <= m; l++) b[ll][l] -= b[icol][l] * dum;
+			for (l = 1; l <= m; l++) b[ll][l] -= b[icol][l] * dum;
 		}
 	}
 	for (l = n; l >= 1; l--) {
 		if (indxr[l] != indxc[l])
 		for (k = 1; k <= n; k++)
-			SWAP(a[k][indxr[l]], a[k][indxc[l]);
+			SWAP(a[k][indxr[l]], a[k][indxc[l]]);
 	}
-	free_ivecotr(ipiv, 1, n);
+	free_ivector(ipiv, 1, n);
 	free_ivector(indxr, 1, n);
 	free_ivector(indxc, 1, n);
 }
