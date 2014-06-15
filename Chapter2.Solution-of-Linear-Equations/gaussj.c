@@ -32,7 +32,7 @@ void gaussj(float **a, int n, float **b, int m)
 	}
 	indxr[i] = irow;
 	indxc[i] = icol;
-	if (a[icol][icol] == 0.0) nrerror("gaussj: Singular Martix-2");
+	if (a[icol][icol] == 0.0) nrerror("gaussj: Singular Matrix-2");
 	pivinv = 1.0 / a[icol][icol];
 	a[icol][icol] = 1.0;
 	for (l = 1; l <= n; l++) a[icol][l] *= pivinv;
