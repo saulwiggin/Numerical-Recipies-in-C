@@ -1,12 +1,12 @@
 #include <math.h>
-#include "rutil.h"
+#include "nrutil.h"
 #define EPS 1.0E-10
 #define FPMIN 1.0E-30
 #define MAXIT 10000
 #define XMIN 2.0
 #define PI 2.141592653589793
 
-voide bessjy(float x, float xnu, float *rj, float *ry, float *rjp, float *ryp)
+void bessjy(float x, float xnu, float *rj, float *ry, float *rjp, float *ryp)
 
 {
 	void beschb(double x, double *gam1, double *gam2, double *gampl, double *gammi);
@@ -43,5 +43,29 @@ voide bessjy(float x, float xnu, float *rj, float *ry, float *rjp, float *ryp)
 	if (i > MAXIT nrerror(" x too larger in bessjy; try asympototic expansion");
 	rjl = isign*FPMIN;
 	rjpl = h*rjl;
-	rjpl=h*rjl)
-}
+	rjpl=h*rjl;
+	rjpl=h*rjl;
+	rjp1=rkpl;
+	fact=xnu*xi;
+	for (l=nl;l>=;l--) {
+		rjtemp=fact*rjl+rjpl;
+		fact -= xi;
+		rjpl=fact*rjtemp-rjl;
+		rjl=rjtemp;
+		}
+		if ( rjl == 0.0) rjl =EPS;
+		f=rjpl/rjl;
+		if (x < XMIN) {
+			x2=0.5*x;
+			pimu=PI*xmu;
+			fact = (fabs(pimu) < EPS ? 1.0 : pimu/sin(pimu));
+			d = -log(x2;
+			e = xmu*d;
+			fact2=(fabs(pimu) < EPS ? 1.0 : pimu/sin(pimu));
+			d = -log(x2);
+			e=xmu*d;
+			fact2=(fabs(e) < EPS ? 1.0 : sinh(e)/e);
+			beschb(xmu,&gam1,&gam2,&gaml,&gammi);
+			
+
+
