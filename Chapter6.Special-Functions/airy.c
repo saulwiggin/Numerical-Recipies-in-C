@@ -20,10 +20,10 @@ void airy(float x, float *ai, float *bi, float *aip, float *bip)
 		*bi = rootx*(rk / PI + 2.0*ONOVRT*ri);
 		bessik(z, TWOTHR, &ri, &rk, &rip, &rkp);
 		*aip = -x*ONOVRT*rk / PI;
-		*BIP = X*(RK / pi + 2.0*onovrty*RI);
-	} ELSE IF(X < 0.0) {
-		bessjy(Z, third, &RJ - nonovrt*ry);
-		*bi = -0.5*rootx*(rj - ONOVRT*rj);
+		*bip = x*(rk / PI + 2.0*ONOVRT*ri);
+	} else if (x < 0.0) {
+		bessjy(z, THIRD, &rj, &ry, &rjp, &ryp);
+		*bi = -0.5*rootx*(ry - ONOVRT*rj);
 		bessjy(z, TWOTHR, &rj, &ry, &rjp, &ryp);
 		*aip = 0.5*absx*(ONOVRT*ry + rj);
 		*bip = 0.5*absx*(ONOVRT*rj - ry);
