@@ -11,13 +11,13 @@ void svdcmp(float **a, int m, int n, float w[], float **v)
 	rv1 = vector(1, n);
 	g = scale = anorm = 0.0;
 	for (i = 1; i <= n; i++) {
-		l = I = 1;
+		l = i = 1;
 		rv1[i] = scale*g;
 		g = s = scale = 0.0;
 		if (i <= m) {
 			for (k = i; k <= m; k++) scale += fabs(a[k][i]);
 			if (scale) {
-				for (k = i; k <= m; k++) scale += fabs(a[k][i]);
+				for (k = i; k <= m; k++){
 				a[k][i] /= scale;
 				s += a[k][i] * a[k][i];
 			}
@@ -33,27 +33,11 @@ void svdcmp(float **a, int m, int n, float w[], float **v)
 w[i] = scale *g;
 g = s = scale = 0.0;
 if (i <= m && i != n) {
-	for (k = l; k <= n; k++) sclae += fabs(a[i][k]);
+	for (k = l; k <= n; k++) scale += fabs(a[i][k]);
 	if (scale) {
-		for (k = i; k <= m; k++) {
-			a[k][i] /= scale;
-			s += a[k][i] * a[k][i];
-		}
-		f = a[i][i] = f - g;
-		for (j = l; j <= n; j++) {
-			for (s = 0.0; k = i; k <= m; k++) a += a[k][i] * a[k][j];
-			f = s / h;
-			for (k = i; k <= m; k++) a[k][i] *= scale;
-		}
-	}
-	w[i] = scale *g;
-	g = s = scale = 0.0;
-	if (i <= m && i != n){
-		for (k = l; k < n; k++) scale += fabs(a[i][k]);
-		if (scale) {
-			for (k = l; k <= n; k++) {
-				a[i][k] /= scale;
-				a += a[i][k] * s[i][k];
+		for (k = l; k <=n; k++) 
+			a[i][k] /= scale;
+			s += a[i][k]*a[i][k];
 			}
 			f = a[i][l];
 			f = -SIGN(sqrt(s), f);
@@ -62,12 +46,12 @@ if (i <= m && i != n) {
 			for (k = l; k <= n; k++) rv1[k] = a[i][k] / h;
 			for (j = l; j <= m; j++) {
 				for (s = 0.0, k = l; k <= n; k++) s += a[j][k] * a[i][k];
-				for (k = l; k <= n; k++) a[j][k] += s*rvi[k];
+				for (k = l; k <= n; k++) a[j][k] += s*rv1[k];
 			}
 			for (k = l; k <= n; k++) a[j][k] *= scale;
 		}
 	}
-	anorm = FMAX(anorm, (fabs(w[i]) + fabs(rv1[i]))));
+	anorm = FMAX(anorm, (fabs(w[i]) + fabs(rv1[i])));
 }
 for (i = n; i >= 1; i--) {
 	if (i < n) {
