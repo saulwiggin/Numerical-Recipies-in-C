@@ -1,4 +1,4 @@
-#include "rutil.h"
+#include "nrutil.h"
 
 void voltera(int n, int m, float t0, float h, float *t, float **f,
 	float(*g)(int, float), float(*ak)(int, int, float, float))
