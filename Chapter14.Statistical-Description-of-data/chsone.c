@@ -1,5 +1,5 @@
 void chsone(float bins[], float ebins[], int nbins, int knstrn, float *df,
-	float *chaq, flat *prob)
+	float *chsq, float *prob)
 {
 	float gammq(float a, float x);
 	void nerror(char error_test[]);

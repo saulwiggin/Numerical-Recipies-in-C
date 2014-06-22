@@ -9,7 +9,7 @@ void ftest(float data1[], unsigned long n1, float data2[], unsigned long n2,
 	avevar(data2, n2, &ave2, &var2);
 	if (var1 > var2) {
 		*f = var1 / var2;
-		df = n1 - 1;
+		df1 = n1 - 1;
 		df2 = n2 - 1;
 	}
 	else {

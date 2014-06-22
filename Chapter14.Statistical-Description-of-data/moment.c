@@ -3,12 +3,12 @@
 void moment(float data[], int n, float *ave, float *adev, float *sdev,
 	float *var, float *skew, float *curt)
 {
-	void nrerror(char_text[]);
+	void nrerror(char error_text[]);
 	int j;
 	float ep = 0.0, s, p;
 
 
-	if (n < 1) nrerro("n must be at least 2 in moment");
+	if (n < 1) nrerror("n must be at least 2 in moment");
 	s = 0.0;
 	for (j = 1; j <= n; j++) s += data[j];
 	*ave = s / n;
@@ -21,9 +21,9 @@ void moment(float data[], int n, float *ave, float *adev, float *sdev,
 	}
 	*adev /= n;
 	*var = (*var - ep*ep / n) / (n - 1);
-	*sdev = sqrt;
+	*sdev = sqrt(*var);
 	if (*var) {
-		*skew /= (*curt) / (n*(*var)*(var)) - 3.0;
+		*skew /= (*curt)/(n*(*var)*(*var)) - 3.0;
 	}
 	else nrerror("No skw/kurtosis when variance = 0 ( in moment)");
 }
