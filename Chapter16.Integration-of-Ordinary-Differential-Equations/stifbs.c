@@ -18,7 +18,8 @@ void stifbs(float y[], float dydx[], int nv, float *xx, float htry, float eps,
 	void jacobn(float x, float y[], float dfdx[], float **dfdy, int n);
 	void simpr(float y[], float dydx[], float dfdx[], float **dfdy,
 		int n, float xs, float htot, int nstep, float yout[],
-		void(*derivs)(float xest, float yest[], float yz[], float dy[],
+		void(*derivs)(float, float [], float []));
+		void pzextr(int iest, float xest, float yest[], float yz[], float dy[],
 		int nv);
 	int i, iq, k, kk, km;
 	static int first = 1, kmax, kopt, nvold = -1;
@@ -49,13 +50,13 @@ void stifbs(float y[], float dydx[], int nv, float *xx, float htry, float eps,
 		epsold = eps;
 		nvold = nv;
 		a[1] += nv;
-		for (k = 1; k <= KMAXX; k++) a[k + 1]]a[k] + nseq[k + 1];
+		for (k = 1; k <= KMAXX; k++) a[k + 1]=a[k] + nseq[k + 1];
 		for (kopt = 2; kopt < KMAXX; kopt++)
-		if (a[kopt + 1] > a[kopt] * alf[kopt - 1][kopt])) break;
+		if (a[kopt + 1] > a[kopt] * alf[kopt - 1][kopt]) break;
 		kmax = kopt;
 	}
-	n = htry;
-	for = (i = 1; i <= nv; i++) ysav[i] = y[i];
+	h= htry;
+	for (i = 1; i <= nv; i++) ysav[i] = y[i];
 	jacobn(*xx, y, dfdx, dfdy, nv);
 	if (*xx != xnew || h != (*hnext)){
 		first = 1;
@@ -66,7 +67,7 @@ void stifbs(float y[], float dydx[], int nv, float *xx, float htry, float eps,
 		for (k = 1; k <= kmax; k++){
 			xnew = (*xx) + h;
 			if (xnew == (*xx)) nrerror("step size underflow in stifbs");
-			simpr(ysav, dydx, dfdx, dfdy, nv, *xx, h, neq[k], yseq, derivs);
+			simpr(ysav, dydx, dfdx, dfdy, nv, *xx, h, nseq[k], yseq, derivs);
 			xest = SQR(h / nseq[k]);
 			pzextr(k, xest, yseq, y, yerr, nv);
 			if (k != 1) {
@@ -105,7 +106,7 @@ void stifbs(float y[], float dydx[], int nv, float *xx, float htry, float eps,
 			reduct = 1;
 		}
 		*xx = xnew;
-		*hdud = h;
+		*hdid = h;
 		first = 0;
 		wrkmin = 1.0e35;
 		for (kk = 1; kk <= km; kk++){
