@@ -2,30 +2,31 @@
 #include "nrutil.h"
 #define SAFETY 0.9
 #define PGROW -0.2
+#define PSHRNK -0.25
 #define ERRCON 1.89e-4
 
 void rkqs(float y[], float dydx[], int n, float *x, float htry, float eps,
 	float yscal[], float *hdid, float *hnext,
 	void(*derivs)(float, float[], float[]))
 {
-	vois rkck(float y[], float dydx[], int n, float x, float h,
+	void rkck(float y[], float dydx[], int n, float x, float h,
 		float yout[], float yerr[], void(*derivs)(float, float[], float[]));
-	int;
+	int i;
 	float errmax, h, xnew, *yerr, *ytemp;
 
 	yerr = vector(1, n);
 	ytemp = vector(1, n);
-	h = ntry;
+	h = htry;
 	for (;;){
-		rkck(y, dydx, n, *x, h, ytemp, yerr, derive);
+		rkck(y, dydx, n, *x, h, ytemp, yerr, derivs);
 		errmax = 0.0;
 		for (i = 1; i <= n; i++) errmax = FMAX(errmax, fabs(yerr[i] / yscal[i]));
 		errmax /= eps;
 		if (errmax > 1.0) {
-			h = SAFETY*h*pow(errmac, PSHRK);
+			h = SAFETY*h*pow(errmax, PSHRNK);
 			if (h < 0.1*h) h *= 0.1;
 			xnew = (*x) + h;
-			if (xnew == *xnew) nrerror("stepsize underflow in rkqs");
+			if (xnew == *x) nrerror("stepsize underflow in rkqs");
 			continue;
 		}
 		else {
